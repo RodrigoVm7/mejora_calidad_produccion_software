@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\encuestas;
 use App\Respuestas;
 use App\cursos_usuarios;
+use App\Carreras;
+use App\Cursos;
 use Illuminate\Http\Request;
 
 class EncuestasController extends Controller
@@ -14,7 +16,10 @@ class EncuestasController extends Controller
     public function index(Request $request){
          $request->user()->authorizeRoles(['profesor']);
          $datos=encuestas::where('rutProfesor',$request->user()->rut)->get();
+         //$datos_cursos=Cursos::where('codigo_curso',$datos->codigoCurso)->get();
+         //$carreras=Carreras::where('id_carrera',$datos_cursos->id_carrera)->get();
          return view('encuestas.index',compact('datos'));
+         //return response()->json($datos[0]->codigoCurso);
     }
 
     /* Función que retorna a la vista para crear una encuesta*/
@@ -45,7 +50,8 @@ class EncuestasController extends Controller
     public function edit(Request $request,$id_encuesta){
         $request->user()->authorizeRoles(['admin','profesor']);
         $encuesta= Encuestas::findOrFail($id_encuesta);
-        return view('encuestas.edit',compact('encuesta'));
+        $datos=cursos_usuarios::where('rut',$request->user()->rut)->get();
+        return view('encuestas.edit',compact('encuesta','datos'));
     }
 
     /* Función que guarda los datos actualizados de una encuesta */
