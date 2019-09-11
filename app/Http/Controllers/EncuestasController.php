@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\encuestas;
 use App\Respuestas;
+use App\cursos_usuarios;
 use Illuminate\Http\Request;
 
 class EncuestasController extends Controller
@@ -19,7 +20,8 @@ class EncuestasController extends Controller
     /* Función que retorna a la vista para crear una encuesta*/
     public function create(Request $request){
         $request->user()->authorizeRoles(['admin','profesor']);
-        return view('encuestas.create');
+        $datos=cursos_usuarios::where('rut',$request->user()->rut)->get();
+        return view('encuestas.create',compact('datos'));
     }
 
     /* Función que almacena una encuesta en la base de datos*/

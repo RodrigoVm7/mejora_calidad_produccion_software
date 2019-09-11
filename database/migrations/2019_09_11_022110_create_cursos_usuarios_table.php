@@ -13,7 +13,7 @@ class CreateCursosUsuariosTable extends Migration
             $table->bigIncrements('id');
             $table->string('rut')->unique();
             $table->foreign('rut')->references('rut')->on('users')->onDelete('cascade');
-            $table->string('codigo_curso')->unique();
+            $table->string('codigo_curso');
             $table->foreign('codigo_curso')->references('codigo_curso')->on('cursos')->onDelete('cascade');
             $table->timestamps();
         });

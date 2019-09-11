@@ -42,10 +42,21 @@
 
 	<div class="form-group">
 		<label for="codigoCurso" class="control-label">{{'Codigo del Curso'}}</label><br>
-		<select name="OS" size="1">
-			<option seelcted value="1"> Elige un Curso </option>
-			<option value="1">Windows XP</option>
-			<option value="1">Windows 7</option>
+		<select name="OS" size="1" style="
+			    display: block;
+				width: 100%;
+    			height: calc(2.19rem + 2px);
+    	padding: .375rem .75rem;
+    	font-size: .9rem;
+    	line-height: 1.6;
+    	color: #495057;
+    	background-color: #fff;
+    	background-clip: padding-box;
+    	border: 1px solid #ced4da;
+    	border-radius: .25rem;">
+			<option select value="1"> Elige un Curso </option>
+			@foreach($datos as $dato)
+				<option value="{{$dato-Z}}">Windows XP</option>
 		</select>
 	</div>
 
