@@ -45,6 +45,7 @@
 		<select name="OS" size="1">
 			<option seelcted value="1"> Elige un Curso </option>
 			<option value="1">Windows XP</option>
+			<option value="1">Windows 7</option>
 		</select>
 	</div>
 
