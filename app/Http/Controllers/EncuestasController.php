@@ -22,6 +22,7 @@ class EncuestasController extends Controller
         $request->user()->authorizeRoles(['admin','profesor']);
         $datos=cursos_usuarios::where('rut',$request->user()->rut)->get();
         return view('encuestas.create',compact('datos'));
+        
     }
 
     /* Función que almacena una encuesta en la base de datos*/
