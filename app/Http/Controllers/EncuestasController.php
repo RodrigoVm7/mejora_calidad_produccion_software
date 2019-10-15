@@ -34,7 +34,7 @@ class EncuestasController extends Controller
     public function store(Request $request){
         $request->user()->authorizeRoles(['admin','profesor']);
         $campos=[
-            'codigoCurso' => 'required|string|max:100',
+            'codigoCurso' => 'required|string|min:2',
             'rutProfesor' => 'required|string|max:100',
             'asunto' => 'required|string|max:100'
         ];

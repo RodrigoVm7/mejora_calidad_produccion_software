@@ -11,18 +11,59 @@
 </div>
 @endif
 
-<!--Sección que mediante el llenado de un formulario, permite ingresar el Id de la encuesta a responder.
-	Posteriormente, los datos son enviados mediante el método POST a la url "/respuestas/show"-->
-<form action="{{ url('/respuestas/show') }}" class="form-horizontal" method="post"   >
-	{{ csrf_field() }}
-	<div class="form-group">
-		<label for="Nombre">{{'Ingrese la ID de la encuesta a responder'}}</label>
-		<input type="text" class="form-control" name="id_encuesta" id="id_encuesta" value="">
+<!-- Seccion que permite que hará que todo lo que se muestre a continuacion, sea dentro de una tabla-->
+<table class="table table-light table-hover">
 
-		<input type="submit" class="btn btn-success" value="Responder Encuesta ✏">
+	<!-- Cabecera de la tabla, donde se especifica los datos que tendrá cada columna-->
+	<thread class="thread-light">
+		<tr>
+			<th>#</th>
+			<th>Id Encuesta</th>
+			<th>Asunto</th>
+			<th>Codigo Curso</th>
+			<th>Acciones</th>
+		</tr>
+	</thread>
 
-	</div>
-</form>
+	<tbody>
+		<!-- Mediante un ciclo For, se mostrará dentro de la tabla el contenido de cada encuesta-->
+		@foreach($datosEncuestas as $encuesta)
+
+			@php
+				$yaRespondio=0
+			@endphp
+			
+			@foreach($datosRespuestas as $respuesta)
+				@if($respuesta->idencuesta==$encuesta->id_encuesta)
+					@php
+						$yaRespondio=1
+					@endphp
+				@endif
+			@endforeach
+
+
+
+		<tr>
+			@if($encuesta->publicada==1 && $encuesta->finalizada==0 && $yaRespondio==0)
+			<td>{{$loop->iteration}}</td>
+			<td>{{ $encuesta->id_encuesta}}</td>
+			<td>{{ $encuesta->asunto}}</td>
+			<td>{{ $encuesta->codigoCurso}}</td>
+			<td>
+
+			<!-- Botonces con las opciones que tendrá asociada cada encuesta, según el estado en que se
+				encuentre esta-->
+
+			
+			<a class="btn btn-info" href="{{url('/respuestas/'.$encuesta->id_encuesta.'/show')}}">Responder ✍🏼
+			</a>
+			</td>
+			@endif
+		</tr>
+		@endforeach
+	</tbody>
+</table>
+
 
 </div>
 @endsection

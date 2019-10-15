@@ -54,11 +54,13 @@
 				background-clip: padding-box;
 				border: 1px solid #ced4da;
 				border-radius: .25rem;">
-			<option selected> Elige un Curso </option>
+			<option selected></option>
 			@foreach($datos as $dato)
 				<option value="{{$dato->codigo_curso}}">{{$dato->codigo_curso}}</option>
 			@endforeach
 		</select>
+		{!! $errors->first('codigoCurso','<div class="invalid-feedback">:message</div>') !!}
+
 	</div>
 
 	<div class="form-group">

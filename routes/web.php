@@ -47,7 +47,7 @@ Auth::routes(['register'=>false,'reset'=>false]);
 Route::post('/respuestas', 'RespuestasController@store')->middleware('auth');
 Route::get('/respuestas', 'RespuestasController@index')->middleware('auth');
 Route::get('/respuestas/create', 'RespuestasController@create')->middleware('auth');
-Route::post('/respuestas/show','RespuestasController@show')->middleware('auth');
+Route::get('/respuestas/{id_encuesta}/show','RespuestasController@show')->middleware('auth');
 Route::get('respuestas/{id}/publicar','RespuestasController@publicar')->middleware('auth');
 
 Route::get('preguntas/{id}/index','PreguntasController@index')->middleware('auth');

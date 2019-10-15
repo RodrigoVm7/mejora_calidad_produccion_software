@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Encuestas;
+use App\cursos_usuarios;
 use App\Respuestas;
 use App\Preguntas;
 use App\preguntasDesarrollo;
 use App\respuestasDesarrollo;
+
 use Illuminate\Http\Request;
 
 class RespuestasController extends Controller
@@ -14,7 +16,10 @@ class RespuestasController extends Controller
     /* Funcion que retorna la vista principal de un estudiante */
     public function index(Request $request){
         $request->user()->authorizeRoles(['admin','student']);
-        return view('respuestas.index');
+        $datosRespuestas=Respuestas::where('rutEstudiante',$request->user()->rut)->get();
+        $datosEncuestas=encuestas::join('cursos_usuarios','encuestas.codigoCurso','=','cursos_usuarios.codigo_curso')->where('rut',$request->user()->rut)->get();
+        return view('respuestas.index',compact('datosEncuestas','datosRespuestas'));
+        //return response()->json($datosRespuestas);
     }
 
     /* Funcion que permite responder una encuesta*/
@@ -60,10 +65,9 @@ class RespuestasController extends Controller
     }
 
     /* Funcion que permite buscar una encuesta a responder, siempre y cuando esta ya este publicada */
-    public function show(Request $request){
+    public function show(Request $request, $id_encuesta){
         $request->user()->authorizeRoles(['admin','student']);
 
-        $id_encuesta=request()->except('_token');
         $encuesta=Encuestas::where('id_encuesta','=',$id_encuesta)->get();
         if($encuesta!="[]" && $encuesta[0]->publicada=='1'){    //Si Existe la encuesta y esta publicada
             $pregunta=Preguntas::where('idencuesta','=',$id_encuesta)->get();
