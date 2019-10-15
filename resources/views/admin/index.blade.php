@@ -4,7 +4,7 @@
 
 <div class="container">
 
-<!-- Seccion que permite mostrar mensajes en pantalla-->
+<!-- Sección que permite mostrar mensajes en pantalla-->
 @if(Session::has('Mensaje'))
 <div class="alert alert-success" role="alert">
 {{ Session::get('Mensaje')}}
@@ -13,7 +13,7 @@
 @endif
 
 
-<!--Seccion que mediante 4 botones, ofrecerá distintas funcionalidades al administrador.
+<!--Sección que mediante 4 botones, ofrecerá distintas funcionalidades al administrador.
 	Cada botón, redirige a distintas url, según lo que se desee realizar-->
 <br/>
 <br/>
