@@ -26,7 +26,7 @@
 	</thread>
 
 	<tbody>
-		<!-- Mediante un ciclo For, se mostrará dentro de la tabla el contenido de cada encuesta-->
+		<!-- Mediante un ciclo For, se mostrará dentro de la tabla cada encuesta-->
 		@foreach($datosEncuestas as $encuesta)
 
 			@php
@@ -51,9 +51,7 @@
 			<td>{{ $encuesta->codigoCurso}}</td>
 			<td>
 
-			<!-- Botonces con las opciones que tendrá asociada cada encuesta, según el estado en que se
-				encuentre esta-->
-
+			<!-- Botón con la opción para responder la encuesta-->
 			
 			<a class="btn btn-info" href="{{url('/respuestas/'.$encuesta->id_encuesta.'/show')}}">Responder ✍🏼
 			</a>
