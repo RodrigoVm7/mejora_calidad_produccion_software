@@ -22,7 +22,7 @@
 		<input type="text" class="form-control" name="rut" id="rut" value="">
 		<input type="submit" class="btn btn-success" value="Buscar Perfil 🔍">
 	</div>
-		<a class="btn btn-primary" href="{{ url('/admin/index') }}">Regresar ←</a>
+		<a class="btn btn-primary" href="{{ url('/admin/index') }}">Volver ←</a>
 
 </form>
 
