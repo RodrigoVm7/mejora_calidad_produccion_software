@@ -42,7 +42,7 @@ Route::get('/iniciar', function () {
 /*Conjunto de todas las rutas utilizadas*/
 Route::resource('encuestas','EncuestasController')->middleware('auth');
 
-Auth::routes(['register'=>false,'reset'=>false]);
+Auth::routes(['register'=>true,'reset'=>false]);
 
 Route::post('/respuestas', 'RespuestasController@store')->middleware('auth');
 Route::get('/respuestas', 'RespuestasController@index')->middleware('auth');
