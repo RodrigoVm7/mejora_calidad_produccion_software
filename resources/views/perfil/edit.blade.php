@@ -25,7 +25,7 @@
 	</div>
 
 	<input type="submit" class="btn btn-success" value="Modificar ✎">
-	<a class="btn btn-primary" href="{{ url('/iniciar') }}">Regresar ←</a>
+	<a class="btn btn-primary" href="{{ url('/iniciar') }}">Regresar ← </a>
 
 </form>
 </div>
