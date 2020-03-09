@@ -10,7 +10,7 @@
 {{ csrf_field() }}
 @foreach($encuesta as $dato)
 <div class="form-group">
-	<label for="id_encuesta" class="control-lavel">{{ 'ID Encuesta: '}}</label>
+	<label for="id_encuesta" class="control-lavel">{{ 'Id Encuesta: '}}</label>
 	<input type="text" class="form-control" name="idencuesta" id="idencuesta" value="{{$dato->id_encuesta}}" readonly="readonly">
 </div>
 

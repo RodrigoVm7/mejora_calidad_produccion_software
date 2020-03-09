@@ -10,7 +10,7 @@
 {{ csrf_field() }}
 
 	<div class="form-group">
-		<label for="idencuesta" class="control-label">{{'ID Encuesta'}}</label>
+		<label for="idencuesta" class="control-label">{{'Id Encuesta'}}</label>
 		<input type="text" class="form-control" name="idencuesta" id="idencuesta" value="{{ $pregunta->idencuesta}}" readonly="readonly">
 	</div>
 

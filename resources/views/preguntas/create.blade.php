@@ -20,7 +20,7 @@
 <form action="{{url('/preguntas/'.$id_encuesta.'/index')}}" class="form-horizontal" method="post">
 	{{ csrf_field() }}
 	<div class="form-group">
-		<label for="idencuesta" class="control-label">{{'ID Encuesta'}}</label>
+		<label for="idencuesta" class="control-label">{{'Id Encuesta'}}</label>
 		<input type="text" class="form-control {{$errors->has('idencuesta')?'is-invalid':''}}" name="idencuesta" id="idencuesta" value="{{ $id_encuesta }}" readonly="readonly">
 		{!! $errors->first('idencuesta','<div class="invalid-feedback">:message</div>') !!}
 	</div>
